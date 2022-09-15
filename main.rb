@@ -11,12 +11,8 @@ def introduction
   puts "You can choose to be the code-MAKER or the code-BREAKER. The computer will take the other role."
   puts ""
   puts "The code-breaker has 12 tries to break the code set by the code-maker."
-  puts "Would you like to the the code-maker or the code-breaker?"
-  puts ""
-  puts "Code-MAKER   - 1"
-  puts "Code-BREAKER - 2"
 end
 
 introduction
-p random_code
+Mastermind.new.maker_or_breaker
 
