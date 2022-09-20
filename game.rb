@@ -3,9 +3,9 @@ require_relative "./human.rb"
 require_relative "./computer.rb"
 require_relative "./modules.rb"
 
-include Introduction
-
 class Mastermind
+  include Introduction
+
   def initialize
     @human = HumanPlayer.new
     @computer = ComputerPlayer.new
@@ -45,7 +45,6 @@ class Mastermind
   end
 
   def play_maker_game
-
   end
 
   def play_breaker_game
@@ -76,18 +75,23 @@ class Mastermind
       
       @guess.each_with_index do |number, index|
         if number == @comparison_array[index]
-          @guess.delete_at(index)
-          @comparison_array.delete_at(index)
-          @clues << "*"
+          @comparison_array[index] = 0
+          @guess[index] = nil
+          @clues << "o"
         end
       end
 
       @guess.each do |number|
         if @comparison_array.include?(number)
-          @clues << "~"
+          @comparison_array = @comparison_array - [number]
+          @clues << "x"
         end
       end
-
+      
+      puts ""
+      puts "Solution: " + @solution.join
+      puts "Comparison: " + @comparison_array.join
+      puts "Guess: " + @guess.join
       puts "Clues: " + @clues.join
       puts ""
       puts "-----------------------------------"
@@ -95,6 +99,7 @@ class Mastermind
       if @tries == 12
         puts ""
         puts "After 12 tries, you haven't busted the code. Better luck next time!"
+        puts "(It was #{@solution.join} by the way)."
       end
 
       @tries += 1

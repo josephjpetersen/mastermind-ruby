@@ -7,7 +7,7 @@ end
 module RandomCode
   def random_code
     code = []
-    for i in 1..4 do
+    4.times do
       code << rand(1..6)
     end
     code
@@ -26,8 +26,9 @@ module Introduction
     puts ""
     puts "The code-breaker has 12 tries to break the code set by the code-maker."
     puts "The code is 4 numbers between 1 and 6."
-    puts "A '*' indicates a correct number in the correct position."
-    puts "A '~' indicates a correct number in the incorrect position"
+    puts ""
+    puts "'o' indicates a correct number in the correct position."
+    puts "'x' indicates a correct number in the incorrect position"
     puts ""
   end
 end
